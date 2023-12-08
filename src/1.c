@@ -16,8 +16,9 @@
 
 // char stack
 
-char infix[25],postfix[25];
+
 int top=-1,stack[25];
+char infix[25],postfix[25];
 
 void push(char item){
 	stack[++top]=item;
@@ -42,6 +43,8 @@ int precedance(char symbol){
 
 	case '^':
 		     return 3;
+	default:
+		return 0;
 	}
 
 
@@ -142,19 +145,18 @@ int evaluate(char postfix[]){
 
 }
 
+
 int main(void) {
 	int result=0;
+
 	setbuf(stdout, NULL);
-
-printf("enter the math problem\n");
-
-
-gets(infix)	;
+	printf("enter the expression\n");
+    gets(infix);
 
 infixTOpostfix(infix, postfix);
-puts(postfix);
+puts(infix);
 
-//result= evaluate(postfix);
+result= evaluate(postfix);
 
 printf("result = %d\n",result);
 
